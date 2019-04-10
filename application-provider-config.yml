@@ -1,0 +1,54 @@
+server:
+  port: 8084
+
+spring:
+  profiles: dev
+  # 指定当前微服务对外暴露的名称
+  application:
+    name: demo-provider-depart
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///test02?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: admin
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  # 指定eureka服务中心
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+
+---
+server:
+  port: 8085
+
+spring:
+  profiles: test
+  # 指定当前微服务对外暴露的名称
+  application:
+    name: demo-provider-depart
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///test03?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: admin
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  # 指定eureka服务中心
+  client:
+    service-url:
+      defaultZone: http://localhost:8002/eureka
